@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Scroll Motion Canvas</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (CDN) for premium UI icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Preloader Overlay -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-glow"></div>
+        <div class="preloader-content">
+            <h1 class="logo-text">SCROLL<span>MOTION</span></h1>
+            <div class="progress-ring-container">
+                <svg class="progress-ring" width="120" height="120">
+                    <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+                    <circle id="progress-ring-bar" class="progress-ring__circle" stroke="url(#gradient)" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#8a2be2" />
+                            <stop offset="50%" stop-color="#4a00e0" />
+                            <stop offset="100%" stop-color="#00f2fe" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="progress-percentage"><span id="load-pct">0</span>%</div>
+            </div>
+            <p class="loading-status" id="loading-status">Downloading assets...</p>
+            <button id="enter-btn" class="enter-btn hidden">ENTER EXPERIENCE</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Interactive Scroll Container -->
+        <main class="scroll-container" id="scroll-container">
+            <!-- Canvas Container (Sticky) -->
+            <div class="canvas-wrapper">
+                <div class="canvas-glow"></div>
+                <canvas id="scroll-canvas"></canvas>
+            </div>
+
+            <!-- Story Slides Overlay -->
+            <div class="slides-container">
+                <!-- Slide 1: Welcome -->
+                <section class="slide active-slide" id="slide-1" data-slide-index="0">
+                    <div class="slide-content center">
+                        <span class="badge">01 // INTRODUCTION</span>
+                        <h2>Interactive Visual Flow</h2>
+                        <p>Scroll down to initiate the cinematic frame sequence. Watch details come to life through interactive motion mechanics.</p>
+                        <div class="scroll-indicator">
+                            <span class="mouse">
+                                <span class="wheel"></span>
+                            </span>
+                            <span class="scroll-text">Scroll to animate</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 2: Feature A -->
+                <section class="slide" id="slide-2" data-slide-index="1">
+                    <div class="slide-content left">
+                        <span class="badge">02 // INERTIA ENGINE</span>
+                        <h2>Buttery Smooth Scroll</h2>
+                        <p>Powered by frame-by-frame canvas rendering with linear interpolation (Lerp). Every scroll wheel tic translates to fluid, high-fidelity visual playback.</p>
+                    </div>
+                </section>
+
+                <!-- Slide 3: Feature B -->
+                <section class="slide" id="slide-3" data-slide-index="2">
+                    <div class="slide-content right">
+                        <span class="badge">03 // RESPONSIVE SCALING</span>
+                        <h2>Pixel-Perfect Resolution</h2>
+                        <p>Dynamic viewport calculations ensure the canvas maintains its presentation grid. Auto-adapts between cover crop and letterbox views.</p>
+                    </div>
+                </section>
+
+                <!-- Slide 4: Feature C -->
+                <section class="slide" id="slide-4" data-slide-index="3">
+                    <div class="slide-content left">
+                        <span class="badge">04 // ADVANCED CONTROLS</span>
+                        <h2>Interactive Fine-Tuning</h2>
+                        <p>Tailor your visual feed. Play, pause, scrub, apply styling shaders, or adjust the responsiveness curve on the fly.</p>
+                    </div>
+                </section>
+
+                <!-- Slide 5: Call to Action -->
+                <section class="slide" id="slide-5" data-slide-index="4">
+                    <div class="slide-content center">
+                        <span class="badge">05 // EXPLORE MORE</span>
+                        <h2>Endless Possibilities</h2>
+                        <p>Create next-generation storytelling interfaces using frame sequencing. Ready for your custom implementation.</p>
+                        <button class="action-btn" onclick="scrollToTop()">Replay Experience</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Floating HUD Control Panel -->
+        <nav class="hud-panel" id="hud-panel">
+            <div class="hud-blur"></div>
+            <div class="hud-content">
+                <!-- Section 1: Playback State -->
+                <div class="hud-group">
+                    <button class="hud-btn" id="play-btn" title="Toggle Autoplay">
+                        <i data-lucide="play" id="play-icon"></i>
+                    </button>
+                    <div class="hud-divider"></div>
+                    <div class="hud-stat">
+                        <span class="hud-stat-label">FRAME</span>
+                        <span class="hud-stat-val" id="frame-counter">001 / 217</span>
+                    </div>
+                </div>
+
+                <!-- Section 2: Scrubber Slider -->
+                <div class="hud-group flex-grow">
+                    <input type="range" class="hud-slider" id="frame-scrubber" min="1" max="217" value="1">
+                </div>
+
+                <!-- Section 3: Visual Modes -->
+                <div class="hud-group">
+                    <div class="hud-divider"></div>
+                    <div class="dropdown-wrapper">
+                        <button class="hud-btn dropdown-trigger" id="filter-btn" title="Visual Filter">
+                            <i data-lucide="sparkles"></i>
+                            <span class="dropdown-text">Original</span>
+                        </button>
+                        <ul class="dropdown-menu" id="filter-menu">
+                            <li data-filter="none" class="active">Original</li>
+                            <li data-filter="mono">Monochrome</li>
+                            <li data-filter="cyber">Cyberpunk</li>
+                            <li data-filter="vintage">Vintage</li>
+                            <li data-filter="glow">High Contrast</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dropdown-wrapper">
+                        <button class="hud-btn dropdown-trigger" id="mode-btn" title="Display Scaling">
+                            <i data-lucide="maximize-2"></i>
+                            <span class="dropdown-text">Cover</span>
+                        </button>
+                        <ul class="dropdown-menu" id="mode-menu">
+                            <li data-mode="cover" class="active">Cover View</li>
+                            <li data-mode="contain">Fit View</li>
+                        </ul>
+                    </div>
+
+                    <button class="hud-btn" id="easing-btn" title="Toggle Easing (Smooth Scrolling)" class="active">
+                        <i data-lucide="gauge"></i>
+                        <span class="btn-indicator active" id="easing-indicator"></span>
+                    </button>
+
+                    <button class="hud-btn" id="fullscreen-btn" title="Toggle Fullscreen">
+                        <i data-lucide="expand"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main JS script -->
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
