@@ -1,11 +1,16 @@
 import '../styles/Signup.css'
 
 export default function Signup() {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    alert('Signup functionality coming soon!')
+  }
+
   return (
     <div className="auth-header">
       <section className="auth-box">
         <h2>Sign Up</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="auth-form-group">
             <input type="text" placeholder="Enter Name" />
           </div>

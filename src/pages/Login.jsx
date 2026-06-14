@@ -1,11 +1,16 @@
 import '../styles/Login.css'
 
 export default function Login() {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    alert('Login functionality coming soon!')
+  }
+
   return (
     <div className="auth-header">
       <section className="auth-box">
         <h2>Login</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="auth-form-group">
             <input type="email" placeholder="Enter Email ID" />
           </div>
