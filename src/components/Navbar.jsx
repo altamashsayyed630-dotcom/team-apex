@@ -15,7 +15,6 @@ export default function Navbar() {
       <div className="brand-bar">
         <img src={logo} alt="Team Apex" className="brand-logo" />
       </div>
-
       <nav className="site-nav">
         {navItems.map((item) => (
           <NavLink
