@@ -5,10 +5,8 @@ import logo from '../assets/tag.png'
 const navItems = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Customize', path: '/customize-jersey' },
   { label: 'Contact', path: '/contact' },
   { label: 'Login', path: '/login' },
-  { label: 'Signup', path: '/signup' }
 ]
 
 export default function Navbar() {
