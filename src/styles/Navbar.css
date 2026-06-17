@@ -46,12 +46,15 @@
 
 .nav-link::after {
   content: '';
-  width: 0%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   height: 2px;
   background: var(--accent);
-  display: block;
-  margin: auto;
-  transition: 0.5s;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s ease;
 }
 
 .nav-link:hover,
@@ -59,9 +62,17 @@
   color: var(--text-primary);
 }
 
-.nav-link:hover::after,
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
 .nav-link.active::after {
-  width: 100%;
+  transform: scaleX(1);
+  transition: none;
+}
+
+.nav-link:not(.active):not(:hover)::after {
+  transform: scaleX(0);
 }
 
 @media (max-width: 980px) {
