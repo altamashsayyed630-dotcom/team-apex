@@ -37,6 +37,7 @@
   position: relative;
   color: var(--text-secondary);
   font-size: 0.82rem;
+  font-family: 'Archivo Black', sans-serif;  /* ← yeh add karo */
   text-transform: uppercase;
   letter-spacing: 0.2em;
   transition: color 0.2s ease;
