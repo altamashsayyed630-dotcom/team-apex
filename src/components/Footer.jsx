@@ -4,6 +4,14 @@ import '../styles/Footer.css'
 export default function Footer() {
   return (
     <footer className="site-footer">
+      <div className="footer-brand-row">
+        <span className="footer-brand-name">TEAM APEX</span>
+        <p className="footer-brand-tagline">
+          Built for competitors. Inspired by champions. Representing passion, performance, and the relentless pursuit of excellence.
+        </p>
+        <span className="footer-hashtag">#TAGonTOP</span>
+      </div>
+
       <div className="footer-grid">
         <div className="footer-col">
           <span className="footer-title">TEAM APEX</span>

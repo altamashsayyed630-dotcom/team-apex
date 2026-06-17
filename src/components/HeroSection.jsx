@@ -8,16 +8,16 @@ export default function HeroSection() {
       <ScrollAnimation />
       <div className="hero-overlay" />
       <div className="hero-copy">
-        <span className="hero-tag">The Apex Predator Series</span>
+        <span className="hero-tag">Official Team Apex Jersey</span>
         <h1>
           TAG <span>ON</span> TOP
         </h1>
         <p>
-          Command the stage with Team Apex's signature competitive streetwear. Built for champions who move fast, think sharp, and own every arena.
+          Every stitch represents the journey. Every color carries the legacy. Join the TAG Army and represent Team Apex with the official esports jersey designed for champions.
         </p>
         <div className="hero-actions">
           <Link to="/customize-jersey" className="btn btn-primary">
-            Customize Your Jersey
+            Shop Now
           </Link>
           <a href="#about-apex" className="btn btn-secondary">
             About Apex
