@@ -64,29 +64,6 @@ export default function JerseyStore() {
         </div>
       </section>
 
-      {/* ── TEAM MEMBERS ── */}
-      <section className="section-shell team-shell">
-        <div className="section-header">
-          <span className="eyebrow">The Squad</span>
-          <h2>Meet The Team</h2>
-        </div>
-        <div className="team-grid">
-          {teamMembers.map((member) => (
-            <motion.div
-              key={member.name}
-              className="member-card"
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.25 }}
-            >
-              <div className="member-avatar">
-                {member.name.charAt(0)}
-              </div>
-              <h3>{member.name}</h3>
-              <span>{member.role}</span>
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
       {/* ── JERSEY SECTION ── */}
       <section className="section-shell section-alt story-shell">
