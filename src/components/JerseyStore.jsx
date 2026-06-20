@@ -10,12 +10,7 @@ const stats = [
   { value: 'India', label: 'Based Organization' }
 ]
 
-const teamMembers = [
-  { name: 'Player 1', role: 'IGL / Fragger' },
-  { name: 'Player 2', role: 'Support' },
-  { name: 'Player 3', role: 'Sniper' },
-  { name: 'Player 4', role: 'Entry Fragger' },
-]
+
 
 export default function JerseyStore() {
   return (
@@ -63,6 +58,7 @@ export default function JerseyStore() {
           ))}
         </div>
       </section>
+
 
 
       {/* ── JERSEY SECTION ── */}
