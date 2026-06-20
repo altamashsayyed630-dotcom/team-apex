@@ -31,23 +31,7 @@ export default function Contact() {
           <button type="submit" className="btn btn-primary">Send Message</button>
         </form>
 
-        <div className="contact-info">
-          <div className="info-card">
-            <span className="info-icon">📍</span>
-            <h3>Location</h3>
-            <p>India</p>
-          </div>
-          <div className="info-card">
-            <span className="info-icon">✉️</span>
-            <h3>Email Us</h3>
-            <p>contact@teamapex.gg</p>
-          </div>
-          <div className="info-card">
-            <span className="info-icon">⏱️</span>
-            <h3>Response Time</h3>
-            <p>Within 24-48 hours</p>
-          </div>
-
+        
           <div className="social-card">
             <h3>Follow Team Apex</h3>
             <div className="social-row">
