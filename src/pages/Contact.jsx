@@ -31,14 +31,12 @@ export default function Contact() {
           <button type="submit" className="btn btn-primary">Send Message</button>
         </form>
 
-        
-          <div className="social-card">
-            <h3>Follow Team Apex</h3>
-            <div className="social-row">
-              <a href="https://www.youtube.com/@Team.ApexGaming" target="_blank" rel="noreferrer" className="social-pill">YouTube</a>
-              <a href="https://www.instagram.com/team.apexgaming" target="_blank" rel="noreferrer" className="social-pill">Instagram</a>
-              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="social-pill">X (Twitter)</a>
-            </div>
+        <div className="social-card">
+          <h3>Follow Team Apex</h3>
+          <div className="social-row">
+            <a href="https://www.youtube.com/@Team.ApexGaming" target="_blank" rel="noreferrer" className="social-pill">YouTube</a>
+            <a href="https://www.instagram.com/team.apexgaming" target="_blank" rel="noreferrer" className="social-pill">Instagram</a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="social-pill">X (Twitter)</a>
           </div>
         </div>
       </div>

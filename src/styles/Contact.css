@@ -17,47 +17,6 @@
   align-items: start;
 }
 
-/* ── INFO CARDS ── */
-.contact-info {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.info-card {
-  padding: 1.5rem;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.25s ease;
-}
-
-.info-card:hover {
-  background: rgba(255, 107, 0, 0.06);
-  border-color: rgba(255, 107, 0, 0.2);
-  transform: translateY(-3px);
-}
-
-.info-icon {
-  font-size: 1.8rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.info-card h3 {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  margin: 0 0 0.4rem;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.info-card p {
-  color: var(--text-secondary);
-  margin: 0;
-  font-size: 0.95rem;
-}
-
 /* ── SOCIAL CARD ── */
 .social-card {
   padding: 1.5rem;
